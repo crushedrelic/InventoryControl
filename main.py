@@ -1,6 +1,6 @@
 
 """
-Excel files should be in the filename regex as follows
+Excel files should be in the filename pattern as follows
 For
     Windows UCMDB = windows_ucmdb
     Windows SCCM = windows_sccm
@@ -10,6 +10,7 @@ For
     Unix Satellite = unix_satellite
     Unix Puppet = unix_puppet
 
+!!! Do not forget to add desktop central for non domain windows machines. 
 """
 # Import module
 import glob
