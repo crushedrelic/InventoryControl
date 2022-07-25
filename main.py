@@ -51,6 +51,34 @@ def compareFiles():
         print(file)
         excelFile = pd.read_excel(file)
         excelArray.append(excelFile)
+    if clickedOS.get() == "Windows":
+        if clickedControl.get() == "Inventory":
+            # windows inventory controls will be done in here
+            print("Windows inventory control will be processed.")
+            # files array should be converted from directory to filename
+            i = 0
+            # Take only the filename not the entire path.
+            for file in filenames:
+                # TO DO: change this according to operating system; in windows "\" in OSX "/"
+                splittedFileNames = filenames[i].split("/")
+                print(splittedFileNames[(len(splittedFileNames)-1)])
+                filenames[i] = splittedFileNames[len(splittedFileNames)-1]
+                i = i+1
+                splittedFileNames.clear()
+            print("Filenames: ") # Debug
+            print(filenames) # Debug
+            # check if all required files are uploaded
+            if "windows_ucmdb.xlsx" in filenames and "windows_sccm.xlsx" in filenames and "windows_antivirus.xlsx" in filenames:
+                print("Files are in the list... Processing comparision operation...")
+
+                # TO DO: Do comparision operations in here
+
+
+            else:
+                print()
+                print(filenames)
+                print("Files are missing in the list, for windows inventory control put at least windows_ucmdb, windows_sccm, windows_antivirus lists")
+
 
     print(excelArray[0])
 
@@ -88,7 +116,7 @@ clickedControl = StringVar()
 
 # initial menu text
 clickedOS.set("Windows")
-clickedControl.set("Envanter")
+clickedControl.set("Inventory")
 
 # Create Dropdown menu
 dropOS = OptionMenu(root, clickedOS, *optionsOS)
